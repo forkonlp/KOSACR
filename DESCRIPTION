@@ -1,5 +1,5 @@
-Package: KnuSentiLexR
-Title: Korean Sentiment Dictionary from KnuSentiLex
+Package: KOSACR
+Title: Korean Sentiment Dictionary from KOSAC
 Version: 0.0.0.9000
 Authors@R: person(given = "Chanyub",
              family = "Park",
@@ -10,8 +10,8 @@ Description: Korean Sentiment Dictionary Packages
 License: CC0
 Encoding: UTF-8
 LazyData: true
-URL: https://github.com/mrchypark/KnuSentiLexR
-BugReports: https://github.com/mrchypark/KnuSentiLexR/issues
+URL: https://github.com/mrchypark/KOSACR
+BugReports: https://github.com/mrchypark/KOSACR/issues
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.0
 Imports: 

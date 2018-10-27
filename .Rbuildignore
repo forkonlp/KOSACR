@@ -1,5 +1,6 @@
+^data-raw$
 ^LICENSE\.md$
 ^\.travis\.yml$
 ^appveyor\.yml$
-^KnuSentiLexR\.Rproj$
+^KOSACR\.Rproj$
 ^\.Rproj\.user$

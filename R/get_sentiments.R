@@ -2,6 +2,6 @@
 #'
 #'
 #' @export
-get_sentiments <- function(source = "knu") {
-  return(source)
+get_sentiments <- function(lexicon = "KOSAC") {
+  return(lexicon)
 }

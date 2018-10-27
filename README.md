@@ -1,17 +1,17 @@
-# KnuSentiLexR
+# KOSACR
 
-[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/mrchypark/KnuSentiLexR?branch=master&svg=true)](https://ci.appveyor.com/project/mrchypark/KnuSentiLexR)
-[![Travis build status](https://travis-ci.org/mrchypark/KnuSentiLexR.svg?branch=master)](https://travis-ci.org/mrchypark/KnuSentiLexR)
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/mrchypark/KOSACR?branch=master&svg=true)](https://ci.appveyor.com/project/mrchypark/KOSACR)
+[![Travis build status](https://travis-ci.org/mrchypark/KOSACR.svg?branch=master)](https://travis-ci.org/mrchypark/KOSACR)
 
 
-The goal of KnuSentiLexR is to ...
+The goal of KOSACR is to ...
 
 ## Installation
 
-You can install the released version of KnuSentiLexR from [CRAN](https://CRAN.R-project.org) with:
+You can install the released version of KOSACR from [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
-install.packages("KnuSentiLexR")
+install.packages("KOSACR")
 ```
 
 ## Example
