@@ -1,25 +1,50 @@
-library(dplyr)
-library(tibble)
 library(stringr)
-library(tidyr)
+library(dplyr)
+library(readr)
 
-knu_lexicon
-jsonlite::fromJSON("https://raw.githubusercontent.com/park1200656/KnuSentiLex/master/KnuSentiLex/data/SentiWord_info.json") %>%
-  as_tibble() %>%
-  select(word, polarity) %>%
-  mutate(ngram = str_count(word, " ") + 1) %>%
-  filter(ngram == 2) %>%
-  separate(word, into = c("w1","w2")) -> n2
+tar <- "http://word.snu.ac.kr/kosac/data/lexicon.zip"
+download.file(tar, "data-raw/lexicon.zip")
+unzip(zipfile = "data-raw/lexicon.zip", exdir = "./data-raw")
 
+# type <- read_csv("./data-raw/expressive-type.csv")
+# no <- read_csv("./data-raw/nested-order.csv")
 
-jsonlite::fromJSON("https://raw.githubusercontent.com/park1200656/KnuSentiLex/master/KnuSentiLex/data/SentiWord_info.json") %>%
-  as_tibble() %>%
-  select(word, polarity) %>%
-  mutate(ngram = str_count(word, " ") + 1) %>%
-  filter(ngram == 1) -> n1
+intensity <- read_csv("./data-raw/intensity.csv") %>%
+  arrange(ngram) %>%
+  mutate(token = ngram,
+         ngram = str_count(token, ";") + 1) %>%
+  select(token, ngram, max.value) %>%
+  rename(value = max.value)
 
-bind_rows(list(word = n2$w1, word = n2$w2)) %>%
-  unique() -> n2
+polarity <- read_csv("./data-raw/polarity.csv") %>%
+  arrange(ngram) %>%
+  mutate(token = ngram,
+         ngram = str_count(token, ";") + 1) %>%
+  select(token, ngram, max.value) %>%
+  rename(value = max.value)
 
-n1 %>% select(word) %>% unique %>% bind_rows(n2) %>% unique() %>% tail
+subj_polarity <- read_csv("./data-raw/subjectivity-polarity.csv") %>%
+  arrange(ngram) %>%
+  mutate(token = ngram,
+         ngram = str_count(token, ";") + 1) %>%
+  select(token, ngram, max.value) %>%
+  rename(value = max.value)
 
+subj_type <- read_csv("./data-raw/subjectivity-type.csv") %>%
+  arrange(ngram) %>%
+  mutate(token = ngram,
+         ngram = str_count(token, ";") + 1) %>%
+  select(token, ngram, max.value) %>%
+  rename(value = max.value)
+
+sentiments <- bind_rows(
+  list(
+    intensity = intensity,
+    polarity = polarity ,
+    subj_polarity = subj_polarity,
+    subj_type = subj_type
+  ),
+  .id = "lex"
+)
+
+use_data(sentiments, overwrite = T)
